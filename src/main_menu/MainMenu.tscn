@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/img/background.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/Grind_Demolished.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/df/grind demolished.tres" type="DynamicFont" id=3]
+[ext_resource path="res://src/main_menu/MainMenu.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 2000, 2000 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 58
+font_data = ExtResource( 2 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer"]
+margin_left = 273.0
+margin_top = 198.0
+margin_right = 751.0
+margin_bottom = 401.0
+
+[node name="Label" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
+margin_right = 478.0
+margin_bottom = 71.0
+custom_colors/font_color = Color( 0.206427, 0.197487, 0.242188, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Memory Game"
+align = 1
+valign = 1
+
+[node name="StartBTN" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+margin_top = 75.0
+margin_right = 478.0
+margin_bottom = 115.0
+custom_fonts/font = ExtResource( 3 )
+text = "START"
+
+[node name="RulesBTN" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+margin_top = 119.0
+margin_right = 478.0
+margin_bottom = 159.0
+custom_fonts/font = ExtResource( 3 )
+text = "Rules"
+
+[node name="QuitBTN" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+margin_top = 163.0
+margin_right = 478.0
+margin_bottom = 203.0
+custom_fonts/font = ExtResource( 3 )
+text = "Quit"
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -262.5
+margin_top = -131.0
+margin_right = 262.5
+margin_bottom = 131.0
+window_title = "Rules"
+dialog_text = "1.	 The objective is to collect the most pairs of cards.
+2.	 The youngest player goes first.
+3. On each turn, a player turns over any two cards (one at a time) and keeps them if the cards match (for instance, two kings)
+4. If they successfully match a pair they get to keep the cards, and that player gets another turn.
+5. When a player turns over two cards that do not match, those cards are turned face down again (in the same position) and it becomes the next player’s turn.
+6. The trick is to remember which cards are where
+7. The person with the most pairs at the end of the game wins.
+8. Have fun!
+"
+dialog_autowrap = true
+
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/StartBTN" to="." method="_on_StartBTN_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/RulesBTN" to="." method="_on_RulesBTN_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/QuitBTN" to="." method="_on_QuitBTN_pressed"]

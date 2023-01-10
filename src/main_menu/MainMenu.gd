@@ -1,0 +1,15 @@
+extends Control
+
+onready var rules_dialog = $AcceptDialog
+
+func _ready():
+	pass
+
+func _on_StartBTN_pressed():
+	print("StartGame")
+
+func _on_RulesBTN_pressed():
+	rules_dialog.popup()
+
+func _on_QuitBTN_pressed():
+	get_tree().quit()
