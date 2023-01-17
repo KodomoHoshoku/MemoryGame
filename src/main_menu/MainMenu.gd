@@ -1,12 +1,14 @@
 extends Control
 
+const main_game = preload("res://src/game_scene/GameScene.tscn")
+
 onready var rules_dialog = $AcceptDialog
 
 func _ready():
 	pass
 
 func _on_StartBTN_pressed():
-	print("StartGame")
+	get_tree().change_scene_to(main_game)
 
 func _on_RulesBTN_pressed():
 	rules_dialog.popup()
